@@ -26,24 +26,15 @@ Every new Claude Code window runs the same six steps.
 6. **Memory orients, transcripts adjudicate.** Memory is a pointer. When memory and the record disagree, the record wins and the memory is fixed. "Not found" is said only after every store was searched.
 7. **Retention is a threat.** Claude Code deletes old transcripts. The method keeps the record.
 
-## Credit
+## Where it comes from
+
+We built this method in our own work, from January 2026 on. Its rules began as corrections in real sessions.
 
 Claude Code's own auto memory already has most of the parts. It keeps a `MEMORY.md` index with one line per memory and a topic file per memory, and its built-in prompt (Claude Code v2.1.288, not in the docs) asks each feedback memory for a Why: and a How to apply: line. We add the human's verbatim dated words and the transcript address. Our index is the same shape as the built-in one.
 
-The closest published neighbours, from our survey of October 2026, one line each:
-
-- **dchu917/ctx** — named workstreams bound to exact conversations; nothing loads until the human resumes one. The closest mechanism to "the human routes".
-- **tigerless-labs/agent-memory** — a `MEMORY.md` root index, typed folders with kebab-case claim files, and full session copies kept in case the host prunes them.
-- **akitaonrails/ai-memory** — typed handoffs and opt-in managed workstreams, with no model in the loop by default.
-- **Digital-Process-Tools/claude-remember** — an identity file you write yourself, plus a handoff file, both injected at start.
-- **BayramAnnakov/claude-reflect** and **rohitg00/pro-workflow** — a correction becomes a rule, with the human's approval.
-- **davegoldblatt/total-recall** — corrections supersede, nothing is deleted, the reasoning is kept.
-- **nicknisi/sessions** — checks memory against sessions and flags memories that were corrected again later.
-- **Arkya-AI/claude-context-os** — a short always-loaded file and a handoff index; the window reads only what the handoff points to.
-- **Cline's Memory Bank** — the well-known baseline: fixed files, read at the start of every task.
-- **ADRs** (npryce/adr-tools, adr/madr) — the pre-AI form of a decision kept with its context.
-
 What we did not find published as one method: a switchboard of lanes; the human routing the window before anything loads; rules kept as the human's dated verbatim words with the transcript line that proves them; and a stated rule that transcripts outrank memory. That is this repository.
+
+In October 2026, before publishing, we surveyed what others have published. The closest neighbours are listed under [Related work](#related-work) at the end.
 
 ---
 
@@ -148,6 +139,21 @@ We have not measured rule-following with and without the Why, and we claim no nu
 - A window that dies before closing leaves its lane one session behind. The transcript still has it; that is what the instrument is for, and why retention matters.
 - It is written for Claude Code's files. The method is plain Markdown, so any agent can read it, but the wake order relies on one always-loaded file.
 - It remembers work, not code. It is not a code knowledge graph.
+
+## Related work
+
+The closest published neighbours, from our survey of October 2026, one line each:
+
+- **dchu917/ctx** — named workstreams bound to exact conversations; nothing loads until the human resumes one. The closest mechanism to "the human routes".
+- **tigerless-labs/agent-memory** — a `MEMORY.md` root index, typed folders with kebab-case claim files, and full session copies kept in case the host prunes them.
+- **akitaonrails/ai-memory** — typed handoffs and opt-in managed workstreams, with no model in the loop by default.
+- **Digital-Process-Tools/claude-remember** — an identity file you write yourself, plus a handoff file, both injected at start.
+- **BayramAnnakov/claude-reflect** and **rohitg00/pro-workflow** — a correction becomes a rule, with the human's approval.
+- **davegoldblatt/total-recall** — corrections supersede, nothing is deleted, the reasoning is kept.
+- **nicknisi/sessions** — checks memory against sessions and flags memories that were corrected again later.
+- **Arkya-AI/claude-context-os** — a short always-loaded file and a handoff index; the window reads only what the handoff points to.
+- **Cline's Memory Bank** — the well-known baseline: fixed files, read at the start of every task.
+- **ADRs** (npryce/adr-tools, adr/madr) — the pre-AI form of a decision kept with its context.
 
 ## Who we are
 
