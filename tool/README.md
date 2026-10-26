@@ -23,7 +23,7 @@ This tool never changes your settings. The index is not a backup: when Claude Co
 
 ## Quick start
 
-Python: tested on 3.12; CI runs 3.10–3.14. Nothing to install.
+Python 3.10–3.14: CI runs the tests on each version for every push. Nothing to install.
 
 1. Download one file, `ctm.py`, from this repository.
 2. Build the index. Later runs read only what changed.
